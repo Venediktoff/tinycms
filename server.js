@@ -1,15 +1,27 @@
 const express = require('express');
-const router = express.Router();
-const {routes} = require('./routes');
-// user env variable for heroku etc
+const fs = require('fs');
+const { routes } = require('./routes');
+
+// to-do user env variable for heroku etc
 const port = 3000;
 
 const app = express();
 
-routes.map(route => {
-app.route(route)
+const returnCache = (location, res) => {
+   fs.readFile('./cache'+location+'.json', 'utf8', (err, data) => {
+        if (err) {
+          return;
+        }
+
+        const response = JSON.parse(data);
+        res.status(200).json(response)
+    })
+}
+
+routes.map(r => {
+app.route(r.route)
     .get((req, res) => {
-    res.status(200).json({message: route})
+       returnCache(r.route, res)
     })
 })
 

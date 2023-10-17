@@ -1,5 +1,4 @@
-const routes = [
-    "/home", "/about", "/contact"];
+const routes = [{route: '/home'}]
 
     module.exports = {
         routes
