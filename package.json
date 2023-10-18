@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "build": "node converter.js"
+    "cache": "node createCache.js"
   },
   "keywords": [
     "cms",
