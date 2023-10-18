@@ -47,7 +47,6 @@ function clearCache(dirPath) {
     });
   }
   
-
 const dataDir = path.resolve(__dirname, 'data');
 const cacheDir = path.resolve(__dirname, 'cache');
 
@@ -67,7 +66,6 @@ files.forEach(file => {
     obj[tag] = text;
   }
 
-
   const relativePath = path.relative(dataDir, file);
   const jsonPath = path.join(cacheDir, relativePath.replace(/\.tml$/, '.json'));
 
@@ -76,7 +74,6 @@ files.forEach(file => {
   fs.writeFileSync(jsonPath, JSON.stringify(obj, null, 2), 'utf8');
 });
 
-// const cacheDir = path.resolve(__dirname, 'cache');
 const jsonFiles = getAllJsonFiles(cacheDir);
 
 jsonFiles.forEach(file => {
